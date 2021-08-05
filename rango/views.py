@@ -3,7 +3,6 @@ from django.http import HttpResponse
 from rango.models import Category
 from rango.models import Page
 from rango.forms import CategoryForm
-from django.shortcuts import redirect
 from rango.forms import PageForm
 from django.shortcuts import redirect
 from django.urls import reverse
@@ -60,6 +59,10 @@ def add_category(request):
             print(form.errors)
 
     return render(request, 'rango/add_category.html', {'form': form})
+
+def get_category_list(current_category=None):
+  return {'categories': Category.objects.all(),
+          'current_category': current_category}
 
 def add_page(request, category_name_slug):
     try:
