@@ -29,7 +29,7 @@ SECRET_KEY = 'ud=+&oct0%5th-5%&q9no+14(toepcbv$tcn+$0f=i+vq!=-v_'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 LOGIN_URL = 'rango:login'
 
@@ -121,6 +121,7 @@ PASSWORD_HASHERS = [
 
 # Internationalization
 # https://docs.djangoproject.com/en/2.1/topics/i18n/
+SESSION_EXPIRE_AT_BROWSER_CLOSE = True
 
 LANGUAGE_CODE = 'en-us'
 
