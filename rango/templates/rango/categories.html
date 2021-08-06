@@ -1,19 +1,24 @@
-<ul>
+<ul class="nav flex-column">
     {% if categories %}
         {% for c in categories %}
             {% if c == current_category %}
-            <li>
-            <strong>
-                <a href="/rango/category/{{ category.slug }}/">{{ category.name }}</a>
-            </strong>
+            <li class="nav-item">
+            
+                <a class="nav-link active"  href="/rango/category/{{ category.slug }}/">
+				<span data-feather="archive"></span>
+				{{ c.name }}</a>
+          
             </li>
             {% else %}
-            <li>
-                 <a href="/rango/category/{{ category.slug }}/">{{ category.name }}</a>
+            <li class="nav-item">
+                 <a class="nav-link active" href="/rango/category/{{ category.slug }}/">
+				 <span data-feather="archive"></span>
+				 {{ c.name }}
+				 </a>
             </li>
             {% endif %}
         {% endfor %}
     {% else %}
-        <li><strong>There are no categories present.</strong></li>
+        <li class="nav-item">There are no categories present.</li>
     {% endif %}
 </ul>

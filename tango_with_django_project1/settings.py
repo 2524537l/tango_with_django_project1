@@ -31,7 +31,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
-LOGIN_URL = 'rango:login'
+LOGIN_URL = 'auth_login'
 
 # Application definition
 
@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rango',
+    'registration',
 ]
 
 MIDDLEWARE = [
@@ -122,6 +123,16 @@ PASSWORD_HASHERS = [
 # Internationalization
 # https://docs.djangoproject.com/en/2.1/topics/i18n/
 SESSION_EXPIRE_AT_BROWSER_CLOSE = True
+
+# If True, users can register.
+REGISTRATION_OPEN = True
+# If True, the user will be automatically logged in after registering.
+REGISTRATION_AUTO_LOGIN = True
+# The URL that Django redirects users to after logging in.
+LOGIN_REDIRECT_URL = 'rango:index'
+# The page users are directed to if they are not logged in.
+# This was set in a previous chapter. The registration package uses this, too.
+LOGIN_URL = 'auth_login'
 
 LANGUAGE_CODE = 'en-us'
 

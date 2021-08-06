@@ -7,6 +7,7 @@ from rango.forms import CategoryForm, PageForm, UserForm, UserProfileForm
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from datetime import datetime
+from rango.bing_search import run_query
 
 
 def index(request):
@@ -19,8 +20,7 @@ def index(request):
     context_dict['pages'] = page_list
 
     visitor_cookie_handler(request)
-    context_dict['visits'] = request.session['visits']
-
+    # context_dict['visits'] = request.session['visits']
     response = render(request, 'rango/index.html', context=context_dict)
     return response
 
@@ -178,3 +178,18 @@ def visitor_cookie_handler(request):
         request.session['last_visit'] = last_visit_cookie
     
     request.session['visits'] = visits
+
+def search(request):
+    print(313)
+    result_list = []
+
+    if request.method == 'POST':
+        query = request.POST.get('query').strip()
+        if query:
+           # result_list = run_query(query)
+           result_list = Page.objects.filter(title__icontains = query)
+    print(result_list)
+    return render(request, 'rango/search.html', {'result_list': result_list})
+
+
+        
